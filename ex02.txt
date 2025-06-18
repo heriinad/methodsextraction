@@ -1,0 +1,112 @@
+@prefix ex:   <http://example.com/ontology#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:Study001 a ex:Study ;
+    ex:hasName "Effects of a job crafting intervention program on work engagement among Japanese employees" ;
+    ex:hasAuthors "Asuka Sakuraya, Akihito Shimazu, Kotaro Imamura, Katsuyuki Namba, Norito Kawakami" ;
+    ex:hasPublisher "BMC Psychology" ;
+    ex:hasDateOfPublishing "2016-10-17"^^xsd:date ;
+    ex:hasDesignOfPublishing "Pretest-posttest study without control group" ;
+    ex:hasObjective "To investigate the effectiveness of a newly developed job crafting intervention program on work engagement among Japanese employees" ;
+    ex:hasHypothese "The intervention will increase work engagement and job crafting, and decrease psychological distress" ;
+    ex:hasParticipants ex:Participants001 ;
+    ex:hasSample ex:Sample001 ;
+    ex:hasRecruitment ex:Recruitment001 ;
+    ex:hasInterventions ex:Intervention001 ;
+    ex:hasOutcomes ex:Outcomes001 ;
+    ex:hasBinding ex:Binding001 ;
+    ex:hasMethods ex:AssignmentMethods001 , ex:StatisticalMethods001 , ex:OtherMethods001 ;
+    ex:hasAnalysis ex:Analysis001 .
+
+ex:Participants001 a ex:Participants ;
+    ex:hasMinAge 38 ;
+    ex:hasMaxAge 49 ;
+    ex:hasEligibilityCriteria "Full-time regular employment; workers with part-time or temporary reemployment excluded" .
+
+ex:Sample001 a ex:Sample ;
+    ex:hasSampleSize 50 ;
+    ex:hasSampleDetermination "Estimated to detect effect size (Cohen’s d) of 0.35 or greater at alpha 0.05, beta 0.20 using G*Power 3" ;
+    ex:hasExplanationInherimAnalyses "No interim checks or stopping rules were reported" .
+
+ex:Recruitment001 a ex:Recruitment ;
+    ex:hasRecruitmentSetting "Private manufacturing company and private psychiatric hospital in Japan" ;
+    ex:hasRecruitmentLocation "Tokyo, Japan" ;
+    ex:hasRecruitmentMethods ex:RecruitmentMethods001 ;
+    ex:hasSamplingMethods ex:SamplingMethods001 .
+
+ex:RecruitmentMethods001 a ex:OtherMethods ;
+    ex:hasDescription "Participants were approached by a contact person in their own company or hospital using an e-mail invitation or a poster" .
+
+ex:SamplingMethods001 a ex:OtherMethods ;
+    ex:hasDescription "All full-time managers in a company and seven selected departments in a hospital were invited; not a systematic sampling plan" .
+
+ex:Intervention001 a ex:Interventions ;
+    ex:hasContent "Two 120-minute job crafting training sessions over two weeks based on Wrzesniewski and Dutton model; involved case study, group sharing, planning, and reflection" ;
+    ex:hasExposureQuantity 2 ;
+    ex:hasDuration "120 minutes per session" ;
+    ex:hasActivitiesToIncreaseCompliance "Participants were given homework booklets and encouraged to practice job crafting between sessions" ;
+    ex:hasInterventionDeliveryMethod ex:InterventionDeliveryMethods001 .
+
+ex:InterventionDeliveryMethods001 a ex:OtherMethods ;
+    ex:hasDescription "Delivered in-person in group settings during or outside working hours" .
+
+ex:InterventionDelivery001 a ex:InterventionDelivery ;
+    ex:hasUnitOfDelivery "Groups of 9–13 participants" ;
+    ex:hasSetting "Company meeting rooms and hospital rooms" ;
+    ex:hasTimeSpan "Two weeks between sessions" ;
+    ex:hasInterventionDeliverer "First author (researcher) and one clinical psychologist" ;
+    ex:hasInterventionDeliveryMethod ex:InterventionDeliveryMethods001 .
+
+ex:Outcomes001 a ex:Outcomes ;
+    ex:hasPrimaryOutcome "Work engagement" ;
+    ex:hasSecondaryOutcome "Job crafting and psychological distress" ;
+    ex:hasValidatedInstruments "Utrecht Work Engagement Scale (UWES); Brief Job Stress Questionnaire (BJSQ); Job crafting scale by Sekiguchi et al." ;
+    ex:hasDataCollectingMethods ex:DataCollectingMethods001 ;
+    ex:hasQualityEnhancingMethods ex:QualityEnhancingMethods001 .
+
+ex:DataCollectingMethods001 a ex:OtherMethods ;
+    ex:hasDescription "Web-based self-report questionnaire at three timepoints: baseline, post-intervention, one-month follow-up" .
+
+ex:QualityEnhancingMethods001 a ex:OtherMethods ;
+    ex:hasDescription "Validated and standardized psychometric instruments used; ethics approval obtained" .
+
+ex:Binding001 a ex:Binding ;
+    ex:hasAccomplishmentOfBinding "No blinding was performed" ;
+    ex:hasAssignmentOfBinding "Open-label; participants and researchers knew about intervention" .
+
+ex:Analysis001 a ex:Analysis ;
+    ex:hasUnitOfAnalysis "Individual participant" ;
+    ex:hasMethodsToAccountVariance ex:MethodsToAccountVariance001 .
+
+ex:MethodsToAccountVariance001 a ex:OtherMethods ;
+    ex:hasDescription "Mixed model for repeated measures analysis over time used to account for intra-individual variance" .
+
+ex:AssignmentMethods001 a ex:AssignmentMethods ;
+    ex:hasDescription "All eligible participants in target departments invited; no randomization" ;
+    ex:hasDescription "Study conducted without a control group due to organizational constraints" .
+
+ex:UnitOfAssignment a ex:AssignmentMethods ;
+    ex:hasDescription "Individuals" .
+
+ex:Restrictions a ex:AssignmentMethods ;
+    ex:hasDescription "No assignment restrictions reported" .
+
+ex:BiasMinimizationMethod a ex:AssignmentMethods ;
+    ex:hasDescription "None stated; study acknowledged non-randomization as a limitation" .
+
+ex:StatisticalMethods001 a ex:StatisticalMethods ;
+    ex:hasDescription "Linear mixed model for repeated measures, t-tests, Cohen’s d effect sizes with 95% confidence intervals" .
+
+ex:PrimaryOutcomeAnalysis a ex:StatisticalMethods ;
+    ex:hasDescription "Analysis of work engagement change across timepoints using mixed model; effect sizes calculated with Cohen’s d" .
+
+ex:AdditionalAnalysis a ex:StatisticalMethods ;
+    ex:hasDescription "Subgroup comparisons between departments and demographic characteristics at baseline" .
+
+ex:MissingDataHandling a ex:StatisticalMethods ;
+    ex:hasDescription "Dropout participants were excluded from effect size analysis; handled by complete-case analysis" .
+
+ex:StatisticalSoftware a ex:StatisticalMethods ;
+    ex:hasDescription "SPSS Statistics 22.0" .

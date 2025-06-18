@@ -1,0 +1,114 @@
+@prefix ex: <http://example.com/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:Study_FCC_VLBW_2019 a ex:Study ;
+    ex:hasName "Family-Centered Care Improves Clinical Outcomes of Very-Low-Birth-Weight Infants"^^xsd:string ;
+    ex:hasAuthors "Bo Lv, Xi-ronga Gao, Jing Sun, Tao-tao Li, Zhen-ye Liu, Li-hui Zhu, Jos M. Latour"^^xsd:string ;
+    ex:hasPublisher "Frontiers in Pediatrics"^^xsd:string ;
+    ex:hasDateOfPublishing "2019-04-12"^^xsd:date ;
+    ex:hasDesignOfPublishing "Quasi-experimental study using convenience sampling"^^xsd:string ;
+    ex:hasObjective "To evaluate a family-centered care intervention on clinical outcomes of very-low-birth-weight infants"^^xsd:string ;
+    ex:hasHypothese "Parent education and parent participation in care improve clinical outcomes of VLBW infants"^^xsd:string ;
+    ex:hasParticipants ex:Participants_01 ;
+    ex:hasSample ex:Sample_01 ;
+    ex:hasRecruitment ex:Recruitment_01 ;
+    ex:hasInterventions ex:Intervention_01 ;
+    ex:hasMethods ex:StatisticalMethods_01 , ex:AssignmentMethods_01 , ex:OtherMethods_01 ;
+    ex:hasBinding ex:Binding_01 ;
+    ex:hasOutcomes ex:Outcomes_01 ;
+    ex:hasAnalysis ex:Analysis_01 .
+
+ex:Participants_01 a ex:Participants ;
+    ex:hasMinAge 0 ;
+    ex:hasMaxAge 0 ;
+    ex:hasEligibilityCriteria "Preterm infants with birth weight <1,500 g; non-invasive oxygen support; parents willing to participate in the care for at least 4 h a day. Exclusion: life-threatening congenital anomalies, surgery, palliative care, expected discharge within 1 week."^^xsd:string .
+
+ex:Sample_01 a ex:Sample ;
+    ex:hasSampleSize 319 ;
+    ex:hasSampleDetermination "Sample size was determined based on 12-month recruitment period using convenience sampling."^^xsd:string ;
+    ex:hasExplanationInherimAnalyses "" .
+
+ex:Recruitment_01 a ex:Recruitment ;
+    ex:hasRecruitmentSetting "Level 3 NICU at Hunan Children’s Hospital, China"^^xsd:string ;
+    ex:hasRecruitmentLocation "Changsha, China"^^xsd:string ;
+    ex:hasRecruitmentMethods ex:RecruitmentMethods ;
+    ex:hasSamplingMethods ex:SamplingMethods .
+
+ex:RecruitmentMethods a ex:OtherMethods ;
+    ex:hasDescription "Infants and parents were recruited upon admission using alternating assignment into intervention and control groups."^^xsd:string .
+
+ex:SamplingMethods a ex:OtherMethods ;
+    ex:hasDescription "Convenience sampling over 12-month period."^^xsd:string .
+
+ex:Intervention_01 a ex:Interventions ;
+    ex:hasContent "Parental education on infant care, hand hygiene, breastfeeding, skin-to-skin contact; parents performed basic care activities and participated in care for at least 4 h/day."^^xsd:string ;
+    ex:hasExposureQuantity 1 ;
+    ex:hasDuration "From admission until discharge"^^xsd:string ;
+    ex:hasActivitiesToIncreaseCompliance "Ongoing nurse support and skill assessments before parental involvement."^^xsd:string .
+
+ex:InterventionDelivery_01 a ex:InterventionDelivery ;
+    ex:hasUnitOfDelivery "Individual (parent-infant dyad)"^^xsd:string ;
+    ex:hasSetting "Level 3 NICU, Hunan Children's Hospital"^^xsd:string ;
+    ex:hasTimeSpan "June 2016 to June 2017"^^xsd:string ;
+    ex:hasInterventionDeliverer "NICU nurses trained in FCC methods"^^xsd:string ;
+    ex:hasInterventionDeliveryMethod ex:InterventionDeliveryMethods .
+
+ex:InterventionDeliveryMethods a ex:OtherMethods ;
+    ex:hasDescription "In-person education and care sessions during NICU admission, 4 h/day parental involvement"^^xsd:string .
+
+ex:StatisticalMethods_01 a ex:Methods ;
+    ex:hasDescription "" .
+
+ex:PrimaryOutcomeAnalysis a ex:StatisticalMethods ;
+    ex:hasDescription "Kolmogorov-Smirnov test for normality; Student t-test for continuous variables; chi-square test for categorical variables; p < 0.05 considered significant."^^xsd:string .
+
+ex:AdditionalAnalysis a ex:StatisticalMethods ;
+    ex:hasDescription "" .
+
+ex:MissingDataHandling a ex:StatisticalMethods ;
+    ex:hasDescription "" .
+
+ex:StatisticalSoftware a ex:StatisticalMethods ;
+    ex:hasDescription "IBM SPSS Statistics for Windows, Version 21.0"^^xsd:string .
+
+ex:AssignmentMethods_01 a ex:AssignmentMethods ;
+    ex:hasDescription "" .
+
+ex:MethodToAssignUnits a ex:AssignmentMethods ;
+    ex:hasDescription "First admitted infant assigned to intervention, second to control, alternating thereafter."^^xsd:string .
+
+ex:UnitOfAssignment a ex:AssignmentMethods ;
+    ex:hasDescription "Individual infants (VLBW neonates)"^^xsd:string .
+
+ex:Restrictions a ex:AssignmentMethods ;
+    ex:hasDescription "No blinding possible due to nature of intervention."^^xsd:string .
+
+ex:BiasMinimizationMethod a ex:AssignmentMethods ;
+    ex:hasDescription "Not explicitly mentioned."^^xsd:string .
+
+ex:OtherMethods_01 a ex:OtherMethods ;
+    ex:hasDescription "" .
+
+ex:MethodsToAccountVariance a ex:OtherMethods ;
+    ex:hasDescription "Not explicitly discussed."^^xsd:string .
+
+ex:QualityEnhancingMethods a ex:OtherMethods ;
+    ex:hasDescription "Nurses trained before delivering FCC; theoretical teaching standardized."^^xsd:string .
+
+ex:DataCollectingMethods a ex:OtherMethods ;
+    ex:hasDescription "Infant health data collected from hospital records; parental demographics collected on admission."^^xsd:string .
+
+ex:Binding_01 a ex:Binding ;
+    ex:hasAccomplishmentOfBinding "Blinding was not possible due to the nature of nurse-led education and care."^^xsd:string ;
+    ex:hasAssignmentOfBinding "Neither parents nor staff were blinded to group assignment."^^xsd:string .
+
+ex:Outcomes_01 a ex:Outcomes ;
+    ex:hasPrimaryOutcome "Infant weight at discharge; breastfeeding rate; days of total parenteral nutrition; days of nasal feeding."^^xsd:string ;
+    ex:hasSecondaryOutcome "Length of NICU stay; hospital expenses; complications: BPD, ROP, NEC, IVH, nosocomial infection, re-admission within 1 month."^^xsd:string ;
+    ex:hasValidatedInstruments "" ;
+    ex:hasQualityEnhancingMethods ex:QualityEnhancingMethods ;
+    ex:hasDataCollectingMethods ex:DataCollectingMethods .
+
+ex:Analysis_01 a ex:Analysis ;
+    ex:hasUnitOfAnalysis "Individual infant"^^xsd:string ;
+    ex:hasMethodsToAccountVariance ex:MethodsToAccountVariance .

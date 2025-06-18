@@ -1,0 +1,99 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:   <http://example.com/ontology#> .
+
+ex:study_001 a ex:Study ;
+    ex:hasName "Extending research on ERITA with NSSID: open pilot trial" ;
+    ex:hasAuthors "Bjureberg et al." ;
+    ex:hasPublisher "BMC Psychiatry" ;
+    ex:hasDateOfPublishing "2018-10-25"^^xsd:date ;
+    ex:hasDesignOfPublishing "Uncontrolled open pilot trial" ;
+    ex:hasObjective "To examine feasibility, acceptability, and utility of an online version of ERITA in adolescents with NSSID." ;
+    ex:hasHypothese "Online ERITA would show high completion and satisfaction, and improvements in NSSI and emotion regulation." ;
+    ex:hasParticipants ex:participants_001 ;
+    ex:hasSample ex:sample_001 ;
+    ex:hasRecruitment ex:recruitment_001 ;
+    ex:hasInterventions ex:interventions_001 ;
+    ex:hasAnalysis ex:analysis_001 ;
+    ex:hasOutcomes ex:outcomes_001 ;
+    ex:hasBinding ex:binding_001 ;
+    ex:hasMethods ex:method_statistical, ex:method_assignment, ex:method_other .
+
+ex:participants_001 a ex:Participants ;
+    ex:hasMinAge 13 ;
+    ex:hasMaxAge 17 ;
+    ex:hasEligibilityCriteria "13–17 years of age; meeting diagnostic criteria for NSSID; ≥1 NSSI episode past month; parent participation; stable psychotropic meds if any." .
+
+ex:sample_001 a ex:Sample ;
+    ex:hasSampleSize 25 ;
+    ex:hasSampleDetermination "Open trial, not based on power calculation." ;
+    ex:hasExplanationInherimAnalyses "No interim checks or stopping rules reported." .
+
+ex:recruitment_001 a ex:Recruitment ;
+    ex:hasRecruitmentSetting "Child and Adolescent Mental Health Services (CAMHS), social media, local newspaper, national self-injury project website" ;
+    ex:hasRecruitmentLocation "Stockholm, Sweden" ;
+    ex:hasRecruitmentMethods ex:RecruitmentMethods ;
+    ex:hasSamplingMethods ex:SamplingMethods .
+
+ex:RecruitmentMethods ex:hasDescription "Participants were self-referred or referred by CAMHS after clinics received information via email and internal web." .
+
+ex:SamplingMethods ex:hasDescription "No systematic sampling plan; inclusion criteria applied to referred/self-referred volunteers." .
+
+ex:interventions_001 a ex:Interventions ;
+    ex:hasContent "Online version of ERITA for adolescents and parallel online parent program with therapist guidance." ;
+    ex:hasExposureQuantity 11 ;
+    ex:hasDuration "12 weeks" ;
+    ex:hasActivitiesToIncreaseCompliance "Weekly therapist guidance, reminders via text/call in case of inactivity, homework support, app-based tracking." ;
+    ex:hasInterventionDeliveryMethod ex:InterventionDeliveryMethods .
+
+ex:InterventionDeliveryMethods ex:hasDescription "Delivered via fully online platform with interactive modules and mobile app." .
+
+ex:analysis_001 a ex:Analysis ;
+    ex:hasUnitOfAnalysis "Individual" ;
+    ex:hasMethodsToAccountVariance ex:MethodsToAccountVariance .
+
+ex:MethodsToAccountVariance ex:hasDescription "Generalized estimation equations (GEE) with inverse probability weighting to handle missing data; robust error estimation." .
+
+ex:outcomes_001 a ex:Outcomes ;
+    ex:hasPrimaryOutcome "Change in past-month NSSI frequency using DSHI-9" ;
+    ex:hasSecondaryOutcome "Emotion dysregulation (DERS), global functioning (CGAS), BPD symptoms (BPFS-C), psychological inflexibility (AAQ-II)" ;
+    ex:hasValidatedInstruments "DSHI-9, DERS, DERS-16, CGAS, BPFS-C, AAQ-II, MINI-KID, NSSI Disorder Index, SCID-BPD" ;
+    ex:hasQualityEnhancingMethods ex:QualityEnhancingMethods ;
+    ex:hasDataCollectingMethods ex:DataCollectingMethods .
+
+ex:QualityEnhancingMethods ex:hasDescription "Validated instruments with strong psychometric properties; internal consistency reported." .
+
+ex:DataCollectingMethods ex:hasDescription "Data collected via self-report, clinician interviews, and weekly digital assessments." .
+
+ex:binding_001 a ex:Binding ;
+    ex:hasAssignmentOfBinding "Not blinded; open-label study." ;
+    ex:hasAccomplishmentOfBinding "Not applicable due to open trial design." .
+
+# Method Instances
+
+ex:method_statistical a ex:StatisticalMethods ;
+    ex:hasDescription "Used generalized estimation equations (GEE) with negative binomial and normal distributions; Cohen’s d effect size; bootstrapped confidence intervals." .
+
+ex:PrimaryOutcomeAnalysis ex:hasDescription "Pre-post and follow-up changes in NSSI frequency and other measures assessed using GEE models; 55% reduction in NSSI observed." .
+
+ex:AdditionalAnalysis ex:hasDescription "Mediation analysis: emotion regulation difficulties mediated improvements in NSSI and self-destructive behavior." .
+
+ex:MissingDataHandling ex:hasDescription "Inverse probability weights used in GEE to handle missing data; assumed missing at random." .
+
+ex:StatisticalSoftware ex:hasDescription "Analyses conducted using R version 3.3.1." .
+
+ex:method_assignment a ex:AssignmentMethods ;
+    ex:hasDescription "Uncontrolled open trial; all eligible participants received the intervention." .
+
+ex:MethodToAssignUnits ex:hasDescription "No assignment to conditions; all participants received the intervention." .
+
+ex:UnitOfAssignment ex:hasDescription "Individual adolescents and their parents." .
+
+ex:Restrictions ex:hasDescription "None; no blocking or stratification." .
+
+ex:BiasMinimizationMethod ex:hasDescription "No matching or minimization used due to open trial design." .
+
+ex:method_other a ex:OtherMethods ;
+    ex:hasDescription "Comprises online delivery, sampling, recruitment, variance adjustment, quality control, and data collection procedures." .

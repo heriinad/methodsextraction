@@ -1,0 +1,112 @@
+@prefix ex: <http://example.com/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+ex:study07 a ex:Study ;
+    ex:hasName "Exploring a parent-focused physical literacy intervention for early childhood: a pragmatic controlled trial of the PLAYshop"^^xsd:string ;
+    ex:hasAuthors "Cassandra Lane, Patti‑Jean Naylor, Madison Predy, Mette Kurtzhals, Ryan E. Rhodes, Kayla Morton, Stephen Hunter, Valerie Carson"^^xsd:string ;
+    ex:hasPublisher "BMC Public Health"^^xsd:string ;
+    ex:hasDateOfPublishing "2022-04-11"^^xsd:date ;
+    ex:hasDesignOfPublishing "pragmatic controlled trial; type 1 effectiveness-implementation hybrid"^^xsd:string ;
+    ex:hasObjective "To evaluate the preliminary efficacy of a theory-based, feasible and potentially scalable physical literacy intervention (the PLAYshop) for parents of preschool-aged children."^^xsd:string ;
+    ex:hasHypothese "Parents in the intervention group will report higher knowledge and confidence, and will show improved parenting practices in facilitating children's physical literacy development, compared to control group."^^xsd:string ;
+    ex:hasParticipants ex:participants07 ;
+    ex:hasSample ex:sample07 ;
+    ex:hasRecruitment ex:recruitment07 ;
+    ex:hasInterventions ex:intervention07 ;
+    ex:hasBinding ex:binding07 ;
+    ex:hasOutcomes ex:outcomes07 ;
+    ex:hasAnalysis ex:analysis07 ;
+    ex:hasMethods ex:MethodToAssignUnits,
+                   ex:UnitOfAssignment,
+                   ex:Restrictions,
+                   ex:BiasMinimizationMethod,
+                   ex:PrimaryOutcomeAnalysis,
+                   ex:AdditionalAnalysis,
+                   ex:MissingDataHandling,
+                   ex:StatisticalSoftware,
+                   ex:MethodsToAccountVariance,
+                   ex:RecruitmentMethods,
+                   ex:SamplingMethods,
+                   ex:QualityEnhancingMethods,
+                   ex:DataCollectingMethods,
+                   ex:InterventionDeliveryMethods .
+
+ex:participants07 a ex:Participants ;
+    ex:hasMinAge 3 ;
+    ex:hasMaxAge 5 ;
+    ex:hasEligibilityCriteria "Parents living within workshop delivery area and having at least one child aged 3–5 years."^^xsd:string .
+
+ex:sample07 a ex:Sample ;
+    ex:hasSampleSize 143 ;
+    ex:hasSampleDetermination "Initial sample size target was 100 to achieve 0.80 power for medium-large effect size; final N=143"^^xsd:string ;
+    ex:hasExplanationInherimAnalyses "Not reported."^^xsd:string .
+
+ex:recruitment07 a ex:Recruitment ;
+    ex:hasRecruitmentSetting "Community recreation centers, daycare centers, preschools, social media (Facebook/Twitter), newsletters, parent playgroups"^^xsd:string ;
+    ex:hasRecruitmentLocation "Edmonton, Alberta and Victoria, British Columbia, Canada"^^xsd:string ;
+    ex:hasRecruitmentMethods [
+        a ex:RecruitmentMethods ;
+        ex:hasDescription "Participants were recruited via posters, social media posts, and email outreach to parent groups."^^xsd:string
+    ] ;
+    ex:hasSamplingMethods [
+        a ex:SamplingMethods ;
+        ex:hasDescription "Systematic assignment (alternating sequence in AB); random assignment (computer-generated 1:1 in BC)"^^xsd:string
+    ] .
+
+ex:intervention07 a ex:Interventions ;
+    ex:hasContent "75-min in-person PLAYshop workshop with interactive activities and educational messages; educational materials; equipment pack; two post-workshop booster emails."^^xsd:string ;
+    ex:hasExposureQuantity 1 ;
+    ex:hasDuration "4 months (November 2019 – March 2020)"^^xsd:string ;
+    ex:hasActivitiesToIncreaseCompliance "Booster emails sent at weeks 3 and 6; included key messages and follow-up support."^^xsd:string ;
+    ex:hasInterventionDeliveryMethod ex:interventionDelivery07 .
+
+ex:interventionDelivery07 a ex:InterventionDelivery ;
+    ex:hasUnitOfDelivery "Group-based workshop sessions for parents and children"^^xsd:string ;
+    ex:hasSetting "Community sites such as recreation centers and sport clubs"^^xsd:string ;
+    ex:hasTimeSpan "75-minute workshop, follow-up over 2 months"^^xsd:string ;
+    ex:hasInterventionDeliverer "Trained facilitators with background in physical literacy, following structured protocol"^^xsd:string ;
+    ex:hasInterventionDeliveryMethod [
+        a ex:InterventionDeliveryMethods ;
+        ex:hasDescription "Delivered in-person in workshop settings using active play, parent-child interaction, and distributed educational resources."^^xsd:string
+    ] .
+
+ex:binding07 a ex:Binding ;
+    ex:hasAssignmentOfBinding "Participants were blinded to group assignment; allocation concealment not performed for staff due to resource constraints."^^xsd:string ;
+    ex:hasAccomplishmentOfBinding "Not fully accomplished; intervention deliverers were not blinded."^^xsd:string .
+
+ex:outcomes07 a ex:Outcomes ;
+    ex:hasPrimaryOutcome "Change in parents’ self-reported knowledge and confidence related to physical literacy"^^xsd:string ;
+    ex:hasSecondaryOutcome "Parent-reported changes in parenting practices related to physical literacy facilitation; implementation facilitators and barriers"^^xsd:string ;
+    ex:hasValidatedInstruments "Validated Likert-scale instruments with high Cronbach alpha; ACTS-MG and PAPP item banks used."^^xsd:string ;
+    ex:hasQualityEnhancingMethods [
+        a ex:QualityEnhancingMethods ;
+        ex:hasDescription "Used psychometrically validated items and reliability-tested scales."^^xsd:string
+    ] ;
+    ex:hasDataCollectingMethods [
+        a ex:DataCollectingMethods ;
+        ex:hasDescription "Data collected via paper and online surveys; follow-up interviews; NVivo used for qualitative coding."^^xsd:string
+    ] .
+
+ex:analysis07 a ex:Analysis ;
+    ex:hasUnitOfAnalysis "Parent participant"^^xsd:string ;
+    ex:hasMethodsToAccountVariance [
+        a ex:MethodsToAccountVariance ;
+        ex:hasDescription "Repeated measures ANOVA used to test group-by-time effects; effect sizes reported as partial eta squared."^^xsd:string
+    ] .
+
+ex:PrimaryOutcomeAnalysis ex:hasDescription "Repeated measures ANOVA on parents' self-reported knowledge and confidence using validated scales."^^xsd:string .
+
+ex:AdditionalAnalysis ex:hasDescription "Exploration of group-by-time interaction for secondary outcomes including perceived barriers and resource availability."^^xsd:string .
+
+ex:MissingDataHandling ex:hasDescription "Incomplete responses due to COVID-related cancellations; descriptive statistics reported; no imputation described."^^xsd:string .
+
+ex:StatisticalSoftware ex:hasDescription "SPSS Version 21.0 used for all quantitative data analysis."^^xsd:string .
+
+ex:MethodToAssignUnits ex:hasDescription "Random assignment (computer-generated) in BC; systematic alternating sequence in AB."^^xsd:string .
+
+ex:UnitOfAssignment ex:hasDescription "Individual parent participants"^^xsd:string .
+
+ex:Restrictions ex:hasDescription "No formal restriction reported; assignment balanced groups pragmatically."^^xsd:string .
+
+ex:BiasMinimizationMethod ex:hasDescription "Blinding of participants; use of standardized program plan for fidelity; limited staff resources prevented full allocation concealment."^^xsd:string .

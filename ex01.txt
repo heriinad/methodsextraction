@@ -1,0 +1,80 @@
+@prefix ex: <http://example.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://example.org/study/> .
+
+:OnlineERITAStudy a ex:Study ;
+    ex:hasName "Extending research on Emotion Regulation Individual Therapy for Adolescents (ERITA) with nonsuicidal self-injury disorder"^^xsd:string ;
+    ex:hasAuthors "Johan Bjureberg, Hanna Sahlin, Erik Hedman-Lagerlöf, Kim L. Gratz, Matthew T. Tull, Jussi Jokinen, Clara Hellner, Brjánn Ljótsson"^^xsd:string ;
+    ex:hasPublisher "BMC Psychiatry"^^xsd:string ;
+    ex:hasDateOfPublishing "2018-10-10"^^xsd:date ;
+    ex:hasDesignOfPublishing "Uncontrolled open pilot trial"^^xsd:string ;
+    ex:hasObjective "To examine the feasibility, acceptability, and utility of an online version of Emotion Regulation Individual Therapy for Adolescents (ERITA)."^^xsd:string ;
+    ex:hasHypothese "Online ERITA will be feasible, acceptable, and result in improvements in NSSI and related outcomes, mediated by improved emotion regulation."^^xsd:string ;
+    ex:hasParticipants :Participants01 ;
+    ex:hasSample :Sample01 ;
+    ex:hasInterventions :Intervention01 ;
+    ex:hasBinding :Binding01 ;
+    ex:hasOutcomes :Outcomes01 ;
+    ex:hasRecruitment :Recruitment01 ;
+    ex:hasAnalysis :Analysis01 ;
+    ex:hasMethods :Methods01 .
+
+:Participants01 a ex:Participants ;
+    ex:hasMinAge 13 ;
+    ex:hasMaxAge 17 ;
+    ex:hasEligibilityCriteria "Aged 13–17, met diagnostic criteria for NSSID, ≥1 NSSI in past month, at least one participating parent, stable medication ≥2 months; excluded for severe suicidal ideation, psychosis, bipolar I, recent substance dependence, concurrent DBT/MBT, or insufficient Swedish."^^xsd:string .
+
+:Sample01 a ex:Sample ;
+    ex:hasSampleSize 25 ;
+    ex:hasSampleDetermination "25 of 60 screened families met eligibility; no formal power analysis reported."^^xsd:string .
+
+:Intervention01 a ex:Interventions ;
+    ex:hasContent "11 adolescent and 6 parent online modules adapted from ERITA, including emotion awareness, impulse control, emotional acceptance, validation, and relapse prevention. Delivered through web platform and mobile app."^^xsd:string ;
+    ex:hasExposureQuantity 11 ;
+    ex:hasDuration "12 weeks"^^xsd:string ;
+    ex:hasActivitiesToIncreaseCompliance "Therapist contact through feedback, reminders by text or phone, mobile app for homework and monitoring."^^xsd:string ;
+    ex:hasInterventionDeliveryMethod :InterventionDelivery01 .
+
+:InterventionDelivery01 a ex:InterventionDelivery ;
+    ex:hasUnitOfDelivery "Individual adolescent and parent modules"^^xsd:string ;
+    ex:hasSetting "Online via secure web platform and mobile app"^^xsd:string ;
+    ex:hasTimeSpan "12 weeks"^^xsd:string ;
+    ex:hasInterventionDeliverer "Licensed clinical psychologists"^^xsd:string .
+
+:Binding01 a ex:Binding ;
+    ex:hasAssignmentOfBinding "No blinding; open pilot trial design."^^xsd:string ;
+    ex:hasAccomplishmentOfBinding "Not applicable due to open design."^^xsd:string .
+
+:Outcomes01 a ex:Outcomes ;
+    ex:hasPrimaryOutcome "NSSI frequency reduction (DSHI-9)"^^xsd:string ;
+    ex:hasSecondaryOutcome "Emotion dysregulation (DERS), global functioning (CGAS), BPD features (BPFS-C), psychological flexibility (AAQ-II)"^^xsd:string ;
+    ex:hasValidatedInstruments "DSHI-9, DERS, CGAS, BPFS-C, AAQ-II – validated psychometric tools for adolescents"^^xsd:string .
+
+:Recruitment01 a ex:Recruitment ;
+    ex:hasRecruitmentSetting "Child and adolescent mental health services, community via newspaper and social media"^^xsd:string ;
+    ex:hasRecruitmentLocation "Stockholm, Sweden"^^xsd:string .
+
+:Analysis01 a ex:Analysis ;
+    ex:hasUnitOfAnalysis "Individual adolescent"^^xsd:string .
+
+:Methods01 a ex:Methods ;
+    ex:hasDescription ex:PrimaryOutcomeAnalysis , ex:AdditionalAnalysis , ex:MissingDataHandling , ex:StatisticalSoftware ,
+                      ex:MethodToAssignUnits , ex:UnitOfAssignment , ex:Restrictions , ex:BiasMinimizationMethod ,
+                      ex:MethodsToAccountVariance , ex:RecruitmentMethods , ex:SamplingMethods ,
+                      ex:QualityEnhancingMethods , ex:DataCollectingMethods , ex:InterventionDeliveryMethods .
+
+# Method Descriptions
+ex:PrimaryOutcomeAnalysis ex:hasDescription "Generalized Estimating Equations (GEE) were used to model change in NSSI frequency (DSHI-9) across pre-treatment, post-treatment, 3-, and 6-month follow-up."^^xsd:string .
+ex:AdditionalAnalysis ex:hasDescription "Subgroup and mediation analyses explored whether improvements in emotion regulation mediated changes in NSSI and self-destructive behaviors."^^xsd:string .
+ex:MissingDataHandling ex:hasDescription "Regression weights inversely related to the probability of value observation were used under the assumption of data missing at random."^^xsd:string .
+ex:StatisticalSoftware ex:hasDescription "Statistical analyses were conducted using R version 3.3.1."^^xsd:string .
+ex:MethodToAssignUnits ex:hasDescription "No assignment to different conditions; this was an uncontrolled open trial."^^xsd:string .
+ex:UnitOfAssignment ex:hasDescription "Individual adolescent"^^xsd:string .
+ex:Restrictions ex:hasDescription "Not applicable due to lack of condition assignment."^^xsd:string .
+ex:BiasMinimizationMethod ex:hasDescription "No randomization; selection bias potentially mitigated by inclusion criteria and reporting per TREND guidelines."^^xsd:string .
+ex:MethodsToAccountVariance ex:hasDescription "Not applicable; unit of analysis matches unit of assignment (individual adolescent)."^^xsd:string .
+ex:RecruitmentMethods ex:hasDescription "Participants were self-referred or referred from CAMHS via emails, internal website, newspaper ads, social media, and national website."^^xsd:string .
+ex:SamplingMethods ex:hasDescription "No systematic sampling plan; convenience sample based on eligibility screening."^^xsd:string .
+ex:QualityEnhancingMethods ex:hasDescription "Validated instruments (e.g., DSHI-9, DERS) used; high internal consistency for all outcome measures."^^xsd:string .
+ex:DataCollectingMethods ex:hasDescription "Weekly and periodic online self-report measures and clinician-rated interviews; some assessments conducted via phone or in person."^^xsd:string .
+ex:InterventionDeliveryMethods ex:hasDescription "Delivered entirely online via secure web platform and mobile app; weekly modules with asynchronous psychologist feedback."^^xsd:string .

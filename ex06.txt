@@ -1,0 +1,108 @@
+@prefix ex: <http://example.com/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:Study001 a ex:Study ;
+    ex:hasName "An authentic leadership training programme to increase nurse empowerment and patient safety" ;
+    ex:hasAuthors "Hasan Fehmi Dirik, Seyda Seren Intepeler" ;
+    ex:hasPublisher "Journal of Advanced Nursing" ;
+    ex:hasDateOfPublishing "2024-04-01"^^xsd:date ;
+    ex:hasDesignOfPublishing "Quasi-experimental study using a one-group pretest–posttest design" ;
+    ex:hasObjective "To investigate the impact of an educational intervention delivered through a multi-faceted training programme on nurses' perceptions of authentic leadership, nurse empowerment and the patient safety climate." ;
+    ex:hasHypothese "1. Nurses' perceptions of head nurses' authentic leadership predict safety climate. 2. Nurses' perceptions of structural empowerment predict safety climate. 3. Nurses' perceptions of psychological empowerment predict safety climate." ;
+    ex:hasInterventions ex:Interventions001 ;
+    ex:hasParticipants ex:Participants001 ;
+    ex:hasSample ex:Sample001 ;
+    ex:hasRecruitment ex:Recruitment001 ;
+    ex:hasBinding ex:Binding001 ;
+    ex:hasOutcomes ex:Outcomes001 ;
+    ex:hasAnalysis ex:Analysis001 ;
+    ex:hasMethods ex:Methods001 .
+
+ex:Interventions001 a ex:Interventions ;
+    ex:hasContent "Multi-faceted training programme with 10 main sessions and 3 reinforcement sessions focused on authentic leadership, empowerment, and patient safety." ;
+    ex:hasExposureQuantity 13 ;
+    ex:hasDuration "3 months + 6 months follow-up" ;
+    ex:hasActivitiesToIncreaseCompliance "Follow-up sessions, interviews, extra exercises booklet, symbolic keychain as a memento." .
+
+ex:InterventionDelivery001 a ex:InterventionDelivery ;
+    ex:hasUnitOfDelivery "Group format, 3 groups of 12 head nurses" ;
+    ex:hasSetting "Training room of the university hospital and participants’ units" ;
+    ex:hasTimeSpan "9 months total (3 months training + 6 months reinforcement)" ;
+    ex:hasInterventionDeliverer "Researchers (Hasan Fehmi Dirik and Seyda Seren Intepeler)" ;
+    ex:hasInterventionDeliveryMethod ex:InterventionDeliveryMethods .
+
+ex:InterventionDeliveryMethods ex:InterventionDeliveryMethods ;
+    ex:hasDescription "In-person workshops, station exercises, group work, Q&A, case studies, follow-up sessions in work units." .
+
+ex:Participants001 a ex:Participants ;
+    ex:hasMinAge 36 ;
+    ex:hasMaxAge 44 ;
+    ex:hasEligibilityCriteria "Head nurses with at least 6 months managerial experience, not previously in leadership programme; followers were nurses reporting to those leaders." .
+
+ex:Sample001 a ex:Sample ;
+    ex:hasSampleSize 189 ;
+    ex:hasSampleDetermination "Convenience sample of 36 head nurses and 153 followers." ;
+    ex:hasExplanationInherimAnalyses "Not reported." .
+
+ex:Recruitment001 a ex:Recruitment ;
+    ex:hasRecruitmentSetting "University hospital with 55 units and 1000 bed capacity in Aegean region of Turkey" ;
+    ex:hasRecruitmentLocation "Izmir, Turkey" ;
+    ex:hasRecruitmentMethods ex:RecruitmentMethods ;
+    ex:hasSamplingMethods ex:SamplingMethods .
+
+ex:RecruitmentMethods ex:RecruitmentMethods ;
+    ex:hasDescription "Invitation sent to eligible head nurses. Followers recruited from nurses working under participating head nurses." .
+
+ex:SamplingMethods ex:SamplingMethods ;
+    ex:hasDescription "Convenience sampling; 36 head nurses and their 153 followers." .
+
+ex:Binding001 a ex:Binding ;
+    ex:hasAccomplishmentOfBinding "" ;
+    ex:hasAssignmentOfBinding "No blinding; all participants and researchers were aware of the intervention." .
+
+ex:Outcomes001 a ex:Outcomes ;
+    ex:hasPrimaryOutcome "Improvement in perception of patient safety climate and authentic leadership." ;
+    ex:hasSecondaryOutcome "Structural and psychological empowerment of nurses." ;
+    ex:hasValidatedInstruments "Safety Climate Survey (SCS), Authentic Leadership Questionnaire (ALQ), Conditions of Work Effectiveness Questionnaire-II (CWEQ-II), Psychological Empowerment Instrument (PEI)." ;
+    ex:hasDataCollectingMethods ex:DataCollectingMethods ;
+    ex:hasQualityEnhancingMethods ex:QualityEnhancingMethods .
+
+ex:DataCollectingMethods ex:DataCollectingMethods ;
+    ex:hasDescription "Surveys administered before, immediately after, and 6 months after intervention. Distributed and collected in person." .
+
+ex:QualityEnhancingMethods ex:QualityEnhancingMethods ;
+    ex:hasDescription "Use of validated instruments with high reliability scores. Data collected in sealed envelopes by trained researchers." .
+
+ex:Analysis001 a ex:Analysis ;
+    ex:hasUnitOfAnalysis "Individual head nurses and individual nurse followers" ;
+    ex:hasMethodsToAccountVariance ex:MethodsToAccountVariance .
+
+ex:MethodsToAccountVariance ex:MethodsToAccountVariance ;
+    ex:hasDescription "Used repeated measures ANOVA and hierarchical regression analysis to account for pre-post changes and confounders." .
+
+ex:Methods001 a ex:Methods ;
+    ex:hasDescription "Multi-faceted intervention design based on TREND guidelines with three phases: education, reinforcement, and evaluation. Included in-person training and follow-up." .
+
+ex:PrimaryOutcomeAnalysis ex:PrimaryOutcomeAnalysis ;
+    ex:hasDescription "Repeated measures ANOVA and dependent samples t-tests used to evaluate change in safety climate and leadership scores over time." .
+
+ex:AdditionalAnalysis ex:AdditionalAnalysis ;
+    ex:hasDescription "Hierarchical regression models tested predictive value of authentic leadership and empowerment on safety climate." .
+
+ex:MissingDataHandling ex:MissingDataHandling ;
+    ex:hasDescription "Responses with 'I have no idea/comment' were excluded from analysis. No imputation reported." .
+
+ex:StatisticalSoftware ex:StatisticalSoftware ;
+    ex:hasDescription "SPSS 22.0 used for statistical analysis." .
+
+ex:MethodToAssignUnits ex:MethodToAssignUnits ;
+    ex:hasDescription "One-group pretest-posttest design; no assignment to different groups." .
+
+ex:UnitOfAssignment ex:UnitOfAssignment ;
+    ex:hasDescription "Head nurses and their followers (groups defined by reporting structure)" .
+
+ex:Restrictions ex:Restrictions ;
+    ex:hasDescription "No specific restrictions reported." .
+
+ex:BiasMinimizationMethod ex:BiasMinimizationMethod ;
+    ex:hasDescription "TREND guideline applied; no randomization, but design attempted to minimize bias by including all eligible head nurses." .

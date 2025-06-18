@@ -1,0 +1,108 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:   <http://example.com/ontology#> .
+
+ex:Study_CALM_Phase2 a ex:Study ;
+    ex:hasName "Managing Cancer And Living Meaningfully (CALM): Phase 2 trial" ;
+    ex:hasAuthors "Chris Lo, Sarah Hales, Judy Jung, Aubrey Chiu, Tania Panday, Anne Rydall, Rinat Nissim, Carmine Malfitano, Danielle Petricone-Westwood, Camilla Zimmermann, Gary Rodin" ;
+    ex:hasPublisher "Palliative Medicine" ;
+    ex:hasDateOfPublishing "2013-10-01"^^xsd:date ;
+    ex:hasDesignOfPublishing "Phase 2 intervention-only design" ;
+    ex:hasObjective "To test the feasibility and preliminary effectiveness of CALM to reduce emotional distress and promote psychological well-being and growth." ;
+    ex:hasHypothese "CALM would reduce depressive symptoms and death anxiety, and increase attachment security, spiritual well-being, and psychological growth." ;
+    ex:hasParticipants ex:Participants_1 ;
+    ex:hasSample ex:Sample_1 ;
+    ex:hasInterventions ex:Intervention_1 ;
+    ex:hasRecruitment ex:Recruitment_1 ;
+    ex:hasOutcomes ex:Outcomes_1 ;
+    ex:hasAnalysis ex:Analysis_1 ;
+    ex:hasBinding ex:Binding_1 ;
+    ex:hasMethods ex:PrimaryOutcomeAnalysis,
+                  ex:AdditionalAnalysis,
+                  ex:MissingDataHandling,
+                  ex:StatisticalSoftware,
+                  ex:MethodToAssignUnits,
+                  ex:UnitOfAssignment,
+                  ex:Restrictions,
+                  ex:BiasMinimizationMethod,
+                  ex:MethodsToAccountVariance,
+                  ex:RecruitmentMethods,
+                  ex:SamplingMethods,
+                  ex:QualityEnhancingMethods,
+                  ex:DataCollectingMethods,
+                  ex:InterventionDeliveryMethods .
+
+ex:Participants_1 a ex:Participants ;
+    ex:hasMinAge 18 ;
+    ex:hasEligibilityCriteria "Stage IV cancer or Stage III lung cancer; no cognitive impairment; fluent in English; interested in individual psychotherapy." .
+
+ex:Sample_1 a ex:Sample ;
+    ex:hasSampleSize 50 ;
+    ex:hasSampleDetermination "Participants were recruited from clinics, 141 approached, 50 consented." ;
+    ex:hasExplanationInherimAnalyses "Not reported." .
+
+ex:Intervention_1 a ex:Interventions ;
+    ex:hasContent "CALM includes 3–8 individual sessions over 6 months, addressing symptom management, self-concept, spirituality, and future preparation." ;
+    ex:hasExposureQuantity 3 ;
+    ex:hasDuration "60 minutes per session" ;
+    ex:hasActivitiesToIncreaseCompliance "Caregiver involvement encouraged; flexible scheduling; supervised therapists." .
+
+ex:InterventionDelivery_1 a ex:InterventionDelivery ;
+    ex:hasUnitOfDelivery "Individual, with optional caregiver participation" ;
+    ex:hasSetting "Princess Margaret Cancer Centre, Toronto" ;
+    ex:hasTimeSpan "3–8 sessions over 6 months" ;
+    ex:hasInterventionDeliverer "Therapists (social workers, psychiatrists, oncologist) with training in CALM." ;
+    ex:hasInterventionDeliveryMethod ex:InterventionDeliveryMethods .
+
+ex:Recruitment_1 a ex:Recruitment ;
+    ex:hasRecruitmentSetting "Medical and Psychosocial Oncology clinics" ;
+    ex:hasRecruitmentLocation "Princess Margaret Cancer Centre, Toronto, Canada" ;
+    ex:hasRecruitmentMethods ex:RecruitmentMethods ;
+    ex:hasSamplingMethods ex:SamplingMethods .
+
+ex:Outcomes_1 a ex:Outcomes ;
+    ex:hasPrimaryOutcome "Depressive symptoms" ;
+    ex:hasSecondaryOutcome "Death anxiety, attachment security, spiritual well-being, psychological growth" ;
+    ex:hasValidatedInstruments "PHQ-9, FACIT-Sp-12, DADDS, ECR-M16, PTGI" ;
+    ex:hasQualityEnhancingMethods ex:QualityEnhancingMethods ;
+    ex:hasDataCollectingMethods ex:DataCollectingMethods .
+
+ex:Analysis_1 a ex:Analysis ;
+    ex:hasUnitOfAnalysis "Individual" ;
+    ex:hasMethodsToAccountVariance ex:MethodsToAccountVariance .
+
+ex:Binding_1 a ex:Binding ;
+    ex:hasAssignmentOfBinding "Not blinded; participants and therapists aware of intervention." ;
+    ex:hasAccomplishmentOfBinding "No blinding conducted." .
+
+# Method Instances with Descriptions
+
+ex:PrimaryOutcomeAnalysis ex:hasDescription "Multilevel regression was used to model change in depressive symptoms over time." .
+
+ex:AdditionalAnalysis ex:hasDescription "Sub-analysis for patients with at least three CALM sessions." .
+
+ex:MissingDataHandling ex:hasDescription "Multilevel models accommodate missing data; no imputation reported." .
+
+ex:StatisticalSoftware ex:hasDescription "Statistical analysis was performed using multilevel modeling; specific software not named." .
+
+ex:MethodToAssignUnits ex:hasDescription "No randomization; all participants received the intervention (intervention-only design)." .
+
+ex:UnitOfAssignment ex:hasDescription "Individual" .
+
+ex:Restrictions ex:hasDescription "Not applicable due to lack of randomization." .
+
+ex:BiasMinimizationMethod ex:hasDescription "Not reported; selection bias may be present due to self-selection and nonrandomized design." .
+
+ex:MethodsToAccountVariance ex:hasDescription "Multilevel regression used to model change and account for variation between and within participants." .
+
+ex:RecruitmentMethods ex:hasDescription "Patients were approached during routine clinic visits by research assistants." .
+
+ex:SamplingMethods ex:hasDescription "No systematic sampling method described; convenience sampling implied." .
+
+ex:QualityEnhancingMethods ex:hasDescription "Validated instruments with established psychometric properties used." .
+
+ex:DataCollectingMethods ex:hasDescription "Self-report questionnaires administered at baseline, 3 months, and 6 months." .
+
+ex:InterventionDeliveryMethods ex:hasDescription "Delivered in person as individual sessions by trained therapists." .

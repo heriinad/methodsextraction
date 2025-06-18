@@ -1,0 +1,105 @@
+@prefix ex: <http://example.com/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:study08 a ex:Study ;
+    ex:hasName "Effectiveness of a group intervention using pain neuroscience education and exercise in women with fibromyalgia" ;
+    ex:hasAuthors "Paula B. Areso-Bóveda, Julia Mambrillas-Varela, Bárbara García-Gómez, José Ignacio Moscosio-Cuevas, Jesús González-Lama, Eva Arnaiz-Rodríguez, María Begoña Arroyo del Barco, Pilar San Teodoro-Blanco" ;
+    ex:hasPublisher "BMC Musculoskeletal Disorders" ;
+    ex:hasDateOfPublishing "2022-03-29"^^xsd:date ;
+    ex:hasDesignOfPublishing "Pragmatic nonrandomised controlled trial" ;
+    ex:hasObjective "To explore the efficacy in fibromyalgia of an intervention based on pain neuroscience education and exercise compared to treatment as usual." ;
+    ex:hasMethods ex:methods08 ;
+    ex:hasInterventions ex:intervention08 ;
+    ex:hasAnalysis ex:analysis08 ;
+    ex:hasRecruitment ex:recruitment08 ;
+    ex:hasOutcomes ex:outcomes08 ;
+    ex:hasParticipants ex:participants08 ;
+    ex:hasSample ex:sample08 ;
+    ex:hasBinding ex:binding08 .
+
+# Methods
+ex:methods08 a ex:Methods ;
+    ex:hasDescription "Intervention group received a 60–90 min individual interview and 6 weekly group sessions based on pain neuroscience education (PNE), followed by one review session a month later, including movement and exercise components." .
+
+# Interventions
+ex:intervention08 a ex:Interventions ;
+    ex:hasContent "Pain neuroscience education (PNE) and body awareness exercises including breathing, proprioception, flexibility, strength and games." ;
+    ex:hasExposureQuantity 7 ;
+    ex:hasDuration "2 hours per session" ;
+    ex:hasActivitiesToIncreaseCompliance "Active listening interview, printed summaries and educational material, group discussion, games and engaging language to avoid nocebo effects." .
+
+# Intervention Delivery
+ex:delivery08 a ex:InterventionDelivery ;
+    ex:hasUnitOfDelivery "Group format, 9–13 participants" ;
+    ex:hasSetting "Primary care physiotherapy units in Burgos, Spain" ;
+    ex:hasTimeSpan "6 weeks + 1 follow-up session at 1 month" ;
+    ex:hasInterventionDeliverer "Physiotherapists, Family Doctors, and Nurses" ;
+    ex:hasInterventionDeliveryMethod ex:InterventionDeliveryMethods .
+
+ex:intervention08 ex:hasInterventionDeliveryMethod ex:InterventionDeliveryMethods .
+
+ex:InterventionDeliveryMethods ex:hasDescription "Delivered as face-to-face group sessions supported by PowerPoint presentations and physical activities led by healthcare professionals." .
+
+# Analysis
+ex:analysis08 a ex:Analysis ;
+    ex:hasUnitOfAnalysis "Individual" ;
+    ex:hasMethodsToAccountVariance ex:MethodsToAccountVariance .
+
+ex:PrimaryOutcomeAnalysis ex:hasDescription "Changes in Fibromyalgia Impact Questionnaire (FIQ) scores at 1 year were primary outcome, analyzed using ANCOVA adjusted for baseline and age." .
+
+ex:AdditionalAnalysis ex:hasDescription "Changes in anxiety, depression, pain intensity, and functional capacity using validated scales (e.g., HAD, BPI, HAQ) were analyzed between groups." .
+
+ex:MissingDataHandling ex:hasDescription "Analysis was conducted on a per protocol basis; no specific missing data imputation was described." .
+
+ex:StatisticalSoftware ex:hasDescription "Data analysis performed using SPSS v24." .
+
+ex:MethodsToAccountVariance ex:hasDescription "Analysis of covariance (ANCOVA) was used to adjust for baseline values and age." .
+
+# Recruitment
+ex:recruitment08 a ex:Recruitment ;
+    ex:hasRecruitmentSetting "5 urban health centres in Burgos and the Burgos Centro Physiotherapy Unit" ;
+    ex:hasRecruitmentLocation "Burgos, Spain" ;
+    ex:hasRecruitmentMethods ex:RecruitmentMethods ;
+    ex:hasSamplingMethods ex:SamplingMethods .
+
+ex:RecruitmentMethods ex:hasDescription "Patients referred from Primary Care Centres who met ACR 2010 criteria for FM; participation based on availability." .
+
+ex:SamplingMethods ex:hasDescription "Opportunistic (non-probability) sampling of accessible FM patients in Primary Care." .
+
+# Outcomes
+ex:outcomes08 a ex:Outcomes ;
+    ex:hasPrimaryOutcome "FIQ total score reduction ≥20% and ≥50%; proportion with FIQ < 39; negativization of ACR 2010 FM criteria." ;
+    ex:hasSecondaryOutcome "Changes in PCS, HAD, BPI, HAQ scores; pain intensity; symptom severity; functional capacity." ;
+    ex:hasValidatedInstruments "S-FIQ, PCS (Pain Catastrophizing Scale), HAD (Hospital Anxiety and Depression Scale), BPI-sf (Brief Pain Inventory), HAQ (Health Assessment Questionnaire)" ;
+    ex:hasQualityEnhancingMethods ex:QualityEnhancingMethods ;
+    ex:hasDataCollectingMethods ex:DataCollectingMethods .
+
+ex:QualityEnhancingMethods ex:hasDescription "Use of validated Spanish versions of outcome questionnaires; standard session protocols." .
+
+ex:DataCollectingMethods ex:hasDescription "Self-administered questionnaires at baseline and 1-year follow-up." .
+
+# Participants
+ex:participants08 a ex:Participants ;
+    ex:hasMinAge 18 ;
+    ex:hasMaxAge 75 ;
+    ex:hasEligibilityCriteria "Women aged 18 or older, meeting ACR 2010 diagnostic criteria for FM; exclusions included incapacitating mental illness or intellectual disability." .
+
+# Sample
+ex:sample08 a ex:Sample ;
+    ex:hasSampleSize 53 ;
+    ex:hasSampleDetermination "No formal sample size calculation due to pragmatic and feasibility nature of the study; all eligible referred patients were included." ;
+    ex:hasExplanationInherimAnalyses "No interim analysis or stopping rules applied." .
+
+# Binding
+ex:binding08 a ex:Binding ;
+    ex:hasAccomplishmentOfBinding "No blinding possible due to nature of intervention; participants and facilitators aware of group assignments." ;
+    ex:hasAssignmentOfBinding "Open-label study; no blinding of participants, deliverers, or outcome assessors." .
+
+# Assignment Methods
+ex:MethodToAssignUnits ex:hasDescription "Participants assigned to intervention or control group based on availability to attend sessions." .
+
+ex:UnitOfAssignment ex:hasDescription "Individual participant." .
+
+ex:Restrictions ex:hasDescription "No restrictions applied to assignment." .
+
+ex:BiasMinimizationMethod ex:hasDescription "Baseline and age adjustments used in statistical analysis to account for group differences." .

@@ -1,0 +1,69 @@
+1. You receive attached: [A] paperexample[01-15].pdf - an academic paper describing a non-randomized control trial. [B] Ontology_Turtle.txt - the ontology for reporting methodological information in non-randomized control trials presented in Turtle code.
+Task: Your task is to extract structured data from Abstract and Methods sections of the [A] using the ontology [B] and return a well-formed Turtle representation of the contents of the non-randomized control study methodology. Use comments to Properties and Instances from the ontology for more context. Be prudent and complete, type Literals using XML Schema, include every single detail in the result. If you can't find matching information to extract, leave the statement empty. Only return the Turtle formatted representation and nothing else.
+
+2. You receive attached: [A] paperexample[01-15].pdf - an academic paper describing a non-randomized control trial. [B] Ontology_Turtle.txt - the ontology for reporting methodological information in non-randomized control trials presented in Turtle code.
+
+Your task is to extract structured data from Abstract and Methods sections of [A] using the ontology [B] and return a well-formed Turtle representation of the non-randomized control study methodology.
+
+Ensure the following:
+Include every single class and subclass referenced in the ontology.
+Extract all relevant properties and relationships.
+Extract instances of StatisticalMethods, AssignmentMethods and Other Methods same as properties.
+Use comments to Properties and Instances in [B] for more context what should be extracted.
+Leave fields empty when the information is absent from the paper.
+Be prudent and complete, include every single detail in the result.
+Type Literals using XML Schema.
+
+Output only the complete and well-formed Turtle syntax, with full structure and no explanations.
+
+3. 
+
+You receive two inputs:
+
+- [A] an academic paper describing a non-randomized control trial (PDF),
+- [B] an RDF ontology in Turtle format for reporting methodological information in such studies.
+
+Your task is to extract structured data from the Abstract and Methods sections of paper [A] using ontology [B], and return a complete and well-formed Turtle representation of the study’s methodology.
+
+---
+
+ONTOLOGY-BASED EXTRACTION INSTRUCTIONS:
+
+1. General Class and Property Extraction:
+
+- For each class in the ontology (e.g., ex:Study, ex:Participants, ex:Sample, ex:Outcomes, etc.), create an instance **only if** the paper contains corresponding information.
+- For each property (e.g., ex:hasObjective, ex:hasEligibilityCriteria, ex:hasSampleSize), populate it with literal values extracted from the paper if available.
+- Use appropriate XML Schema datatypes: xsd:string, xsd:integer, xsd:date, etc.
+- Leave values empty (e.g., "") only if information is genuinely missing.
+
+2. Method Instance Extraction:
+
+- Include every method instance defined in the ontology (e.g., ex:PrimaryOutcomeAnalysis, ex:RecruitmentMethods, ex:StatisticalSoftware, etc.).
+- For each method instance:
+  - Use the rdfs:comment as a guide to locate matching information in the Abstract or Methods section.
+  - Populate ex:hasDescription with quoted or paraphrased content from the paper.
+  - If the method is not used or mentioned at all, ex:hasDescription may be left empty.
+
+3. Comments and Descriptions:
+
+- rdfs:comment should not be changed — it serves only as contextual guidance.
+- ex:hasDescription must contain actual study-specific extracted text where applicable.
+
+4. Relationships:
+
+- Use ontology-defined relationships (e.g., ex:hasInterventions, ex:hasParticipants) to link the main study instance to its methodological components.
+
+---
+
+OUTPUT INSTRUCTIONS:
+
+- Output only the valid and complete Turtle syntax.
+- Structure the Turtle output clearly: define the main Study instance and its immediate linked components first then group each component in order
+- Use compact URI notation
+- Ensure the RDF:
+  - Is syntactically valid.
+  - Includes all relevant classes, properties, and method instances used in the study.
+  - Includes ex:hasDescription for all method instances, populated where possible.
+- Do not add any explanation or commentary outside the Turtle data.
+
+Be exhaustive and accurate. Extract every detail from Abstract and Methods that maps to the ontology, even if it requires light interpretation. Prefer quoting the paper directly where possible.

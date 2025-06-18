@@ -1,0 +1,97 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:   <http://example.com/ontology#> .
+
+ex:study001 a ex:Study ;
+    ex:hasName "Emergency Department Vestibular Rehabilitation Therapy for Dizziness and Vertigo" ;
+    ex:hasAuthors "Howard S. Kim et al." ;
+    ex:hasPublisher "JAMA Network Open" ;
+    ex:hasDateOfPublishing "2025-02-14"^^xsd:date ;
+    ex:hasDesignOfPublishing "Nonrandomized clinical trial" ;
+    ex:hasObjective "To examine the feasibility of ED vestibular rehabilitation therapy (ED-VeRT) using a protocolized diagnostic classification algorithm and collection of longitudinal patient-reported outcomes." ;
+    ex:hasMethods ex:methods001 ;
+    ex:hasAnalysis ex:analysis001 ;
+    ex:hasRecruitment ex:recruitment001 ;
+    ex:hasOutcomes ex:outcomes001 ;
+    ex:hasInterventions ex:intervention001 ;
+    ex:hasBinding ex:binding001 ;
+    ex:hasParticipants ex:participants001 ;
+    ex:hasSample ex:sample001 .
+
+ex:methods001 a ex:Methods ;
+    ex:hasDescription "Participants received either the ED-VeRT intervention or usual care based on physician discretion. ED-VeRT was delivered by ED physical therapists using a standardized diagnostic and treatment algorithm." .
+
+ex:PrimaryOutcomeAnalysis ex:hasDescription "Generalized linear mixed models (GLMM) were used to analyze primary outcome of Dizziness Handicap Inventory (DHI) scores over 3 months, adjusting for study arm, baseline score, time, interaction terms, age, and gender." .
+
+ex:AdditionalAnalysis ex:hasDescription "Exploratory subgroup analyses based on age and symptom duration; sensitivity analysis with multiple imputation and inverse probability weighting." .
+
+ex:MissingDataHandling ex:hasDescription "Multiple imputation (m=40) was used for missing follow-up data, combined with inverse probability weighting in sensitivity analysis." .
+
+ex:StatisticalSoftware ex:hasDescription "All statistical analyses were conducted using R version 4.0.4." .
+
+ex:MethodToAssignUnits ex:hasDescription "Participants were assigned to treatment arms (ED-VeRT or usual care) at the discretion of the treating physician." .
+
+ex:UnitOfAssignment ex:hasDescription "Individual patient level." .
+
+ex:Restrictions ex:hasDescription "No formal restrictions such as blocking or stratification were applied." .
+
+ex:BiasMinimizationMethod ex:hasDescription "Baseline differences were adjusted for in models; the study design acknowledges limitations due to nonrandom assignment." .
+
+ex:analysis001 a ex:Analysis ;
+    ex:hasUnitOfAnalysis "Individual participant" ;
+    ex:hasMethodsToAccountVariance ex:MethodsToAccountVariance .
+
+ex:MethodsToAccountVariance ex:hasDescription "GLMM used with random participant effects; physician effects excluded due to lack of variation." .
+
+ex:recruitment001 a ex:Recruitment ;
+    ex:hasRecruitmentSetting "Urban academic emergency department in Chicago, IL" ;
+    ex:hasRecruitmentLocation "Northwestern Memorial Hospital" ;
+    ex:hasRecruitmentMethods ex:RecruitmentMethods ;
+    ex:hasSamplingMethods ex:SamplingMethods .
+
+ex:RecruitmentMethods ex:hasDescription "Patients assessed for eligibility by research assistants during working hours and selected evenings/weekends." .
+
+ex:SamplingMethods ex:hasDescription "Convenience sample based on ED visits for dizziness within the study period." .
+
+ex:outcomes001 a ex:Outcomes ;
+    ex:hasPrimaryOutcome "Change in Dizziness Handicap Inventory (DHI) score at 3 months." ;
+    ex:hasSecondaryOutcome "Change in Vestibular Activities Avoidance Inventory-9 (VAAI-9), use of sedating medication, follow-up care, and falls." ;
+    ex:hasValidatedInstruments "DHI (25-item scale, score 0-100), VAAI-9 (9-item scale, score 0-54)" ;
+    ex:hasQualityEnhancingMethods ex:QualityEnhancingMethods ;
+    ex:hasDataCollectingMethods ex:DataCollectingMethods .
+
+ex:QualityEnhancingMethods ex:hasDescription "Use of validated outcome instruments (DHI, VAAI-9)." .
+
+ex:DataCollectingMethods ex:hasDescription "Structured REDCap surveys at 1 week, 1 month, 2 months, and 3 months post-visit." .
+
+ex:intervention001 a ex:Interventions ;
+    ex:hasContent "ED-VeRT intervention consisting of evaluation and treatment based on diagnostic algorithm (e.g., Epley maneuver, glucocorticoids), education, and referral." ;
+    ex:hasExposureQuantity 1 ;
+    ex:hasDuration "Single ED visit session with 3-month follow-up" ;
+    ex:hasActivitiesToIncreaseCompliance "Participants received $10 gift card for each follow-up survey, up to $50." ;
+    ex:hasInterventionDeliveryMethod ex:InterventionDeliveryMethods .
+
+ex:interventionDelivery001 a ex:InterventionDelivery ;
+    ex:hasUnitOfDelivery "Individual patient" ;
+    ex:hasSetting "Emergency Department" ;
+    ex:hasTimeSpan "November 16, 2021 to February 6, 2023 (follow-up to May 1, 2023)" ;
+    ex:hasInterventionDeliverer "ED Physical Therapists at Northwestern Memorial Hospital" ;
+    ex:hasInterventionDeliveryMethod ex:InterventionDeliveryMethods .
+
+ex:InterventionDeliveryMethods ex:hasDescription "In-person one-on-one delivery during ED visit." .
+
+ex:binding001 a ex:Binding ;
+    ex:hasAccomplishmentOfBinding "Not applicable; no blinding was used." ;
+    ex:hasAssignmentOfBinding "Patients and physicians were not blinded due to discretionary treatment assignment." .
+
+ex:participants001 a ex:Participants ;
+    ex:hasMinAge 18 ;
+    ex:hasMaxAge 99 ;
+    ex:hasEligibilityCriteria "Inclusion: Age ≥18, presenting with isolated dizziness or vertigo. Exclusion: Severe neurologic deficit, non-English speakers, pregnancy, inability to follow up." .
+
+ex:sample001 a ex:Sample ;
+    ex:hasSampleSize 125 ;
+    ex:hasSampleDetermination "Initial target sample of 100 based on feasibility considerations; increased to 125 to account for ~20% attrition." ;
+    ex:hasExplanationInherimAnalyses "No interim checks or stopping rules were applied." .

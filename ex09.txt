@@ -1,0 +1,90 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:   <http://example.com/ontology#> .
+
+ex:study09 a ex:Study ;
+    ex:hasName "Emotion regulation individual therapy for adolescents with nonsuicidal self-injury disorder: a feasibility study" ;
+    ex:hasAuthors "Johan Bjureberg, Hanna Sahlin, Clara Hellner, Erik Hedman-Lagerlöf, Kim L. Gratz, Jonas Bjärehed, Jussi Jokinen, Matthew T. Tull, Brjánn Ljótsson" ;
+    ex:hasPublisher "BMC Psychiatry" ;
+    ex:hasDateOfPublishing "2017-01-01"^^xsd:date ;
+    ex:hasDesignOfPublishing "Uncontrolled open trial" ;
+    ex:hasObjective "To evaluate the feasibility, acceptability, and utility of Emotion Regulation Individual Therapy for Adolescents (ERITA) with Nonsuicidal Self-Injury Disorder (NSSID)." ;
+    ex:hasHypothese "That ERITA would demonstrate high credibility and acceptability and lead to improvements in NSSI, self-destructive behaviors, emotion regulation difficulties, and BPD symptoms." ;
+    ex:hasInterventions ex:intervention09 ;
+    ex:hasParticipants ex:participants09 ;
+    ex:hasSample ex:sample09 ;
+    ex:hasOutcomes ex:outcomes09 ;
+    ex:hasRecruitment ex:recruitment09 ;
+    ex:hasAnalysis ex:analysis09 ;
+    ex:hasBinding ex:binding09 ;
+    ex:hasMethods ex:PrimaryOutcomeAnalysis, ex:AdditionalAnalysis, ex:MissingDataHandling, ex:StatisticalSoftware,
+                  ex:MethodToAssignUnits, ex:UnitOfAssignment, ex:Restrictions, ex:BiasMinimizationMethod,
+                  ex:MethodsToAccountVariance, ex:RecruitmentMethods, ex:SamplingMethods,
+                  ex:QualityEnhancingMethods, ex:DataCollectingMethods, ex:InterventionDeliveryMethods .
+
+ex:intervention09 a ex:Interventions ;
+    ex:hasContent "Emotion Regulation Individual Therapy for Adolescents (ERITA), adapted from ERGT manual; 12 weekly sessions; included modules on emotional awareness, regulation, and valued directions; combined with an internet-delivered parent program." ;
+    ex:hasExposureQuantity 12 ;
+    ex:hasDuration "12 weeks" ;
+    ex:hasActivitiesToIncreaseCompliance "Parent involvement, youth-friendly design, online therapist support, simplified homework, relapse prevention session." .
+
+ex:participants09 a ex:Participants ;
+    ex:hasMinAge 13 ;
+    ex:hasMaxAge 17 ;
+    ex:hasEligibilityCriteria "13–17 years old; met diagnostic criteria for NSSID; ≥1 NSSI episode in the past month; stable medication; ongoing psychiatric treatment; parental consent for parent program participation. Excluded: psychosis, bipolar I, substance dependence, severe anorexia, insufficient Swedish." .
+
+ex:sample09 a ex:Sample ;
+    ex:hasSampleSize 17 ;
+    ex:hasSampleDetermination "Participants were consecutively referred and screened from outpatient clinics; not randomized." ;
+    ex:hasExplanationInherimAnalyses "No formal interim analyses or stopping rules reported." .
+
+ex:recruitment09 a ex:Recruitment ;
+    ex:hasRecruitmentSetting "Child and Adolescent Mental Health Services clinics" ;
+    ex:hasRecruitmentLocation "Stockholm and Malmö, Sweden" ;
+    ex:hasRecruitmentMethods "Referral from outpatient mental health services" ;
+    ex:hasSamplingMethods "Consecutive sampling from eligible referrals." .
+
+ex:analysis09 a ex:Analysis ;
+    ex:hasUnitOfAnalysis "Individual participant" ;
+    ex:hasMethodsToAccountVariance ex:MethodsToAccountVariance .
+
+ex:binding09 a ex:Binding ;
+    ex:hasAccomplishmentOfBinding "Not applicable; open trial" ;
+    ex:hasAssignmentOfBinding "No blinding; open label design." .
+
+ex:outcomes09 a ex:Outcomes ;
+    ex:hasPrimaryOutcome "Reduction in frequency and versatility of nonsuicidal self-injury (NSSI)" ;
+    ex:hasSecondaryOutcome "Improvements in emotion regulation difficulties, borderline personality features, global functioning, and self-destructive behaviors" ;
+    ex:hasValidatedInstruments "Deliberate Self Harm Inventory (DSHI-9), Difficulties in Emotion Regulation Scale (DERS), Borderline Personality Feature Scale for Children (BPFS-C), Children’s Global Assessment Scale (CGAS), Borderline Symptom List (BSL)" ;
+    ex:hasDataCollectingMethods ex:DataCollectingMethods ;
+    ex:hasQualityEnhancingMethods ex:QualityEnhancingMethods .
+
+ex:PrimaryOutcomeAnalysis ex:hasDescription "Generalized Estimation Equation (GEE) models used for pre-post and follow-up comparisons; negative binomial and normal distributions applied depending on variable type." .
+
+ex:AdditionalAnalysis ex:hasDescription "Exploratory mediation analysis tested emotion regulation difficulties as mediator; interaction effects of concurrent treatment and medication explored." .
+
+ex:MissingDataHandling ex:hasDescription "Handled using regression weights assuming missing at random; robust error estimation employed." .
+
+ex:StatisticalSoftware ex:hasDescription "R version 3.3.1 used for data analysis." .
+
+ex:MethodToAssignUnits ex:hasDescription "No random assignment; open, uncontrolled design." .
+
+ex:UnitOfAssignment ex:hasDescription "Individual adolescent participants." .
+
+ex:Restrictions ex:hasDescription "No restrictions applied; no stratification or blocking." .
+
+ex:BiasMinimizationMethod ex:hasDescription "No specific bias minimization methods used due to nonrandomized design." .
+
+ex:MethodsToAccountVariance ex:hasDescription "Modeling included clustered bootstrapping and accounted for repeated measures within participants." .
+
+ex:RecruitmentMethods ex:hasDescription "Referral-based recruitment from outpatient mental health clinics." .
+
+ex:SamplingMethods ex:hasDescription "Consecutive sampling without randomization." .
+
+ex:QualityEnhancingMethods ex:hasDescription "Validated outcome measures; supervised assessments by trained clinicians; filmed sessions for fidelity." .
+
+ex:DataCollectingMethods ex:hasDescription "Self-report questionnaires and clinician-rated interviews collected at pre-treatment, post-treatment, and 6-month follow-up." .
+
+ex:InterventionDeliveryMethods ex:hasDescription "Delivered in-person individually; supported by an online component for parents with therapist guidance." .
