@@ -1,0 +1,66 @@
+SYSTEM
+Extract methodological metadata from the attached paper into RDF/Turtle INSTANCES using the provided ontology.
+
+KEY RULES
+1) Missing → OMIT the triple (no empty strings/placeholders).
+2) Evidence REQUIRED for any emitted value on the SAME instance:
+   - ex:evidenceText  (short verbatim quote)
+   - ex:sourceSection (TitlePage | HeaderFooter | Abstract | Methods | Results | Discussion | References)
+   - ex:pageNumber    (integer)
+   - ex:confidence    (0–1)
+If you cannot quote evidence, omit the property.
+
+METHODS MODEL (important)
+- Methods are CLASSES (Statistical, Assignment, Other). Create per-study METHOD INSTANCES with:
+  - ex:hasDescription (text)
+  - Provenance fields above
+  - Link each method instance to the study via ex:hasMethods
+  - Link each method instance to its host section node via ex:appliesTo
+    (e.g., appliesTo → the study’s Analysis / Recruitment / Outcomes / InterventionDelivery node)
+
+OUTPUT CONTRACT
+- Instances only (A-Box). Do NOT redefine schema.
+- Use ontology rdfs:comment as guidance; prefer Methods > Results > Abstract > TitlePage > HeaderFooter > Discussion > References.
+- Prefixes (exactly):
+  @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+  @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+  @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+  @prefix ex:   <http://example.com/ontology#> .
+- Instance IRIs: ex:Study_{KEY}, ex:Study_{KEY}_{Section}, ex:Study_{KEY}_{MethodName}
+- Datatypes: "2024"^^xsd:gYear, "--11"^^xsd:gMonth, "PT45M"^^xsd:duration, integers for counts, decimals for means.
+- Extract all authors into ex:hasAuthorName (repeatable, one per author, in order, from TitlePage, with provenance on the Study instance).
+- FORBIDDEN as values: not mentioned, not reported, N/A, none, no data, unknown, can't find, no information.
+
+TASK
+Read {paperexample08.pdf} and {Ontology_Trend.txt}. Extract only what the ontology expects; omit unsupported fields.
+Deliverable: A single, well-formed Turtle document containing only instances that describe the study’s methodological information, following all rules above.
+
+MINIMAL EXAMPLE
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:   <http://example.com/ontology#> .
+
+ex:Study_001 a ex:Study ;
+  ex:hasName "Title…" ;
+  ex:hasPublicationYear "2023"^^xsd:gYear ;
+  ex:hasPublicationMonth "--11"^^xsd:gMonth ;
+  ex:hasAnalysis ex:Study_001_Analysis ;
+  ex:hasOutcomes ex:Study_001_Outcomes ;
+  ex:hasMethods ex:Study_001_PrimaryOutcomeAnalysis .
+
+ex:Study_001_Analysis a ex:Analysis .
+ex:Study_001_Outcomes a ex:Outcomes ;
+  ex:hasPrimaryOutcome "Primary outcome text…" ;
+  ex:evidenceText "quote…" ;
+  ex:sourceSection "Methods" ;
+  ex:pageNumber 4 ;
+  ex:confidence 0.9 .
+
+ex:Study_001_PrimaryOutcomeAnalysis a ex:PrimaryOutcomeAnalysis ;
+  ex:hasDescription "Mixed-effects linear model…" ;
+  ex:appliesTo ex:Study_001_Analysis ;
+  ex:evidenceText "We used mixed-effects models…" ;
+  ex:sourceSection "Methods" ;
+  ex:pageNumber 5 ;
+  ex:confidence 0.9 .

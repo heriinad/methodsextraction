@@ -1,0 +1,337 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:   <http://example.com/ontology#> .
+
+ex:StudyOntology a owl:Ontology ;
+  rdfs:label "TREND ontology"@en ;
+
+#################################################################
+# Core classes
+#################################################################
+
+ex:Study a owl:Class ; rdfs:label "Study" .
+ex:Methods a owl:Class ; rdfs:label "Methods" .
+ex:Interventions a owl:Class ; rdfs:label "Interventions" .
+ex:Analysis a owl:Class ; rdfs:label "Analysis" .
+ex:Recruitment a owl:Class ; rdfs:label "Recruitment" .
+ex:Outcomes a owl:Class ; rdfs:label "Outcomes" .
+ex:Blinding a owl:Class ; rdfs:label "Blinding" .
+ex:Participants a owl:Class ; rdfs:label "Participants" .
+ex:Sample a owl:Class ; rdfs:label "Sample" .
+ex:Instrument a owl:Class ; rdfs:label "Instrument" .
+
+#################################################################
+# Subclasses
+#################################################################
+
+# Subclass of Interventions
+ex:InterventionDelivery a owl:Class ; rdfs:subClassOf ex:Interventions ; rdfs:label "Intervention Delivery" .
+
+# Top-level subclasses
+ex:StatisticalMethods a owl:Class ; rdfs:subClassOf ex:Methods ; rdfs:label "Statistical Methods" .
+ex:AssignmentMethods a owl:Class ; rdfs:subClassOf ex:Methods ; rdfs:label "Assignment Methods" .
+ex:OtherMethods a owl:Class ; rdfs:subClassOf ex:Methods ; rdfs:label "Other Methods" .
+
+# Statistical methods subclasses
+ex:PrimaryOutcomeAnalysis a owl:Class ; rdfs:subClassOf ex:StatisticalMethods ;
+  rdfs:label "Primary Outcome Analysis" ;
+  rdfs:comment "Statistical methods used to compare study groups for primary outcome(s), including correlated data methods."@en .
+
+ex:AdditionalAnalysis a owl:Class ; rdfs:subClassOf ex:StatisticalMethods ;
+  rdfs:label "Additional Analysis" ;
+  rdfs:comment "Subgroup analyses, adjusted models."@en .
+
+ex:MissingDataHandling a owl:Class ; rdfs:subClassOf ex:StatisticalMethods ;
+  rdfs:label "Missing Data Handling" ;
+  rdfs:comment "Approach for missing outcomes (e.g., multiple imputation)."@en .
+
+ex:StatisticalSoftware a owl:Class ; rdfs:subClassOf ex:StatisticalMethods ;
+  rdfs:label "Statistical Software" ;
+  rdfs:comment "The software used (e.g., R, Stata)."@en .
+
+# Assignment methods subclasses
+ex:MethodToAssignUnits a owl:Class ; rdfs:subClassOf ex:AssignmentMethods ;
+  rdfs:label "Method to Assign Units to Study Conditions" ;
+  rdfs:comment "How groups/units were formed."@en .
+
+ex:UnitOfAssignmentCategory a owl:Class ; rdfs:subClassOf ex:AssignmentMethods ;
+  rdfs:label "Unit of Assignment (category)" ;
+  rdfs:comment "Category for the unit being assigned (e.g., individual, group, community)."@en .
+
+ex:Restrictions a owl:Class ; rdfs:subClassOf ex:AssignmentMethods ;
+  rdfs:label "Restrictions" ;
+  rdfs:comment "Restrictions in assignment (e.g., blocking, stratification, minimization)."@en .
+
+ex:BiasMinimizationMethod a owl:Class ; rdfs:subClassOf ex:AssignmentMethods ;
+  rdfs:label "Bias Minimization Method" ;
+  rdfs:comment "Approaches to reduce bias from non-randomization (e.g., matching, covariate adjustment)."@en .
+
+# Other methods subclasses
+ex:MethodsToAccountVariance a owl:Class ; rdfs:subClassOf ex:OtherMethods ;
+  rdfs:label "Methods to Account Variance" ;
+  rdfs:comment "If unit of analysis differs from unit of assignment, method to account for clustering (design effect, multilevel models)."@en .
+
+ex:RecruitmentMethod a ex:OtherMethods ;
+    rdfs:label "Recruitment Methods" ;
+    rdfs:comment "How participants were found (e.g., referral, self-selection)"@en . 
+
+ex:SamplingMethod a ex:OtherMethods ;
+    rdfs:label "Sampling Methods" ;
+    rdfs:comment "Sampling method if a systematic sampling plan was implemented"@en .
+
+ex:QualityEnhancingMethod a ex:OtherMethods ;
+    rdfs:label "Quality Enhancing Methods" ;
+    rdfs:comment "Methods used to enhance the quality of measurements"@en .
+
+ex:DataCollectingMethod a ex:OtherMethods ;
+    rdfs:label "Data Collecting Methods" ;
+    rdfs:comment "Method how was data collected"@en .
+
+ex:InterventionDeliveryMethod a ex:OtherMethods ;
+    rdfs:label "Intervention Delivery Methods" ;
+    rdfs:comment "How Intervention was delivered (in person, online, group sessions)"@en .
+
+#################################################################
+# Object Properties (Relationships)
+#################################################################
+
+ex:hasMethods a owl:ObjectProperty ;
+  rdfs:domain ex:Study ; rdfs:range ex:Methods ; rdfs:label "has Methods" ;
+  rdfs:comment "Attach any per-study method instance here to keep a flat list of all methods used."@en .
+
+ex:hasAnalysis a owl:ObjectProperty ;
+  rdfs:domain ex:Study ; rdfs:range ex:Analysis ; rdfs:label "has Analysis" .
+
+ex:hasRecruitment a owl:ObjectProperty ;
+  rdfs:domain ex:Study ; rdfs:range ex:Recruitment ; rdfs:label "has Recruitment" .
+
+ex:hasOutcomes a owl:ObjectProperty ;
+  rdfs:domain ex:Study ; rdfs:range ex:Outcomes ; rdfs:label "has Outcomes" .
+
+ex:hasInterventions a owl:ObjectProperty ;
+  rdfs:domain ex:Study ; rdfs:range ex:Interventions ; rdfs:label "has Interventions" .
+
+ex:hasBlinding a owl:ObjectProperty ;
+  rdfs:domain ex:Study ; rdfs:range ex:Blinding ; rdfs:label "has Blinding" .
+
+ex:hasParticipants a owl:ObjectProperty ;
+  rdfs:domain ex:Study ; rdfs:range ex:Participants ; rdfs:label "has Participants" .
+
+ex:hasSample a owl:ObjectProperty ;
+  rdfs:domain ex:Study ; rdfs:range ex:Sample ; rdfs:label "has Sample" .
+
+ex:usesInstrument a owl:ObjectProperty ;
+  rdfs:domain ex:Outcomes ; rdfs:range ex:Instrument ;
+  rdfs:label "uses Instrument" .
+
+# Generic link from a method instance to the specific section it belongs to
+ex:appliesTo a owl:ObjectProperty ;
+  rdfs:domain ex:Methods ; rdfs:range owl:Thing ;
+  rdfs:label "applies to (section node)" ;
+  rdfs:comment "Link a method instance to the concrete section node it belongs to (e.g., this study's Recruitment, Outcomes, Analysis, InterventionDelivery)."@en .
+
+#################################################################
+# Datatype Properties
+#################################################################
+
+# Study identification & bibliographic
+ex:hasName a owl:DatatypeProperty ;
+  rdfs:domain ex:Study ; rdfs:range xsd:string ;
+  rdfs:label "Study Name" ;
+  rdfs:comment "Full study title from title page."@en .
+
+ex:hasAuthorName a owl:DatatypeProperty ;
+  rdfs:domain ex:Study ; rdfs:range xsd:string ;
+  rdfs:label "Author (repeatable)" ;
+  rdfs:comment "Repeat once per author"@en .
+
+ex:hasPublisher a owl:DatatypeProperty , owl:FunctionalProperty ;
+  rdfs:domain ex:Study ; rdfs:range xsd:string ;
+  rdfs:label "Publisher" .
+
+ex:hasPublicationYear a owl:DatatypeProperty , owl:FunctionalProperty ;
+  rdfs:domain ex:Study ; rdfs:range xsd:gYear ;
+  rdfs:label "Publication Year" ;
+  rdfs:comment "Year from header/footer/title page."@en .
+
+ex:hasPublicationMonth a owl:DatatypeProperty , owl:FunctionalProperty ;
+  rdfs:domain ex:Study ; rdfs:range xsd:gMonth ;
+  rdfs:label "Publication Month" ;
+  rdfs:comment "Month from header/footer/title page if present (e.g., --05 for May)."@en .
+
+ex:hasDOI a owl:DatatypeProperty ;
+  rdfs:domain ex:Study ; rdfs:range xsd:string ;
+  rdfs:label "DOI" .
+
+ex:hasPMID a owl:DatatypeProperty ;
+  rdfs:domain ex:Study ; rdfs:range xsd:string ;
+  rdfs:label "PMID" .
+
+# Study aims
+ex:hasObjective a owl:DatatypeProperty ;
+  rdfs:domain ex:Study ; rdfs:range xsd:string ;
+  rdfs:label "Objective" .
+
+ex:hasHypothesis a owl:DatatypeProperty ;
+  rdfs:domain ex:Study ; rdfs:range xsd:string ;
+  rdfs:label "Hypothesis" .
+
+# Study design
+ex:hasStudyDesign a owl:DatatypeProperty ;
+  rdfs:domain ex:Study ; rdfs:range xsd:string ;
+  rdfs:label "Study Design" ;
+  rdfs:comment "Suggested values: 'non-randomized', 'quasi-experimental', 'before–after', 'pretest–posttest', 'interrupted time series', etc."@en .
+
+# Interventions
+ex:hasContent a owl:DatatypeProperty ;
+  rdfs:domain ex:Interventions ; rdfs:range xsd:string ;
+  rdfs:label "Content" ;
+  rdfs:comment "What the treatment included / what was given."@en .
+
+ex:hasExposureQuantity a owl:DatatypeProperty ;
+  rdfs:domain ex:Interventions ; rdfs:range xsd:integer ;
+  rdfs:label "Exposure Quantity" ;
+  rdfs:comment "Number of sessions/episodes intended to be delivered."@en .
+
+ex:hasDuration a owl:DatatypeProperty ;
+  rdfs:domain ex:Interventions ; rdfs:range xsd:duration ;
+  rdfs:label "Duration" ;
+  rdfs:comment "Duration of a session (use xsd:duration, e.g., PT45M)."@en .
+
+ex:hasActivitiesToIncreaseCompliance a owl:DatatypeProperty ;
+  rdfs:domain ex:Interventions ; rdfs:range xsd:string ;
+  rdfs:label "Activities to Increase Compliance or Adherence" .
+
+# Intervention Delivery
+ex:hasUnitOfDelivery a owl:DatatypeProperty ;
+  rdfs:domain ex:InterventionDelivery ; rdfs:range xsd:string ;
+  rdfs:label "Unit of Delivery" ;
+  rdfs:comment "Grouping during delivery (e.g., individual, group)."@en .
+
+ex:hasSetting a owl:DatatypeProperty ;
+  rdfs:domain ex:InterventionDelivery ; rdfs:range xsd:string ;
+  rdfs:label "Setting" ;
+  rdfs:comment "Where the intervention was delivered."@en .
+
+ex:hasTimeSpan a owl:DatatypeProperty ;
+  rdfs:domain ex:InterventionDelivery ; rdfs:range xsd:duration ;
+  rdfs:label "Time Span" ;
+  rdfs:comment "Overall intervention length (use xsd:duration, e.g., P12W)."@en .
+
+ex:hasInterventionDeliverer a owl:DatatypeProperty ;
+  rdfs:domain ex:InterventionDelivery ; rdfs:range xsd:string ;
+  rdfs:label "Intervention Deliverer" ;
+  rdfs:comment "Who delivered the intervention."@en .
+
+# Analysis
+ex:hasUnitOfAnalysis a owl:DatatypeProperty ;
+  rdfs:domain ex:Analysis ; rdfs:range xsd:string ;
+  rdfs:label "Unit of Analysis" ;
+  rdfs:comment "Suggested values: 'individual', 'group', 'cluster', 'classroom', 'clinic', 'community'."@en .
+
+# Recruitment
+ex:hasRecruitmentSetting a owl:DatatypeProperty ;
+  rdfs:domain ex:Recruitment ; rdfs:range xsd:string ;
+  rdfs:label "Recruitment Setting" .
+
+ex:hasRecruitmentLocation a owl:DatatypeProperty ;
+  rdfs:domain ex:Recruitment ; rdfs:range xsd:string ;
+  rdfs:label "Recruitment Location" .
+
+# Outcomes
+ex:hasPrimaryOutcome a owl:DatatypeProperty ;
+  rdfs:domain ex:Outcomes ; rdfs:range xsd:string ;
+  rdfs:label "Primary Outcome" .
+
+ex:hasSecondaryOutcome a owl:DatatypeProperty ;
+  rdfs:domain ex:Outcomes ; rdfs:range xsd:string ;
+  rdfs:label "Secondary Outcome" .
+
+# Instruments
+ex:instrumentName a owl:DatatypeProperty ;
+  rdfs:domain ex:Instrument ; rdfs:range xsd:string ;
+  rdfs:label "Instrument Name" .
+
+# Blinding
+ex:hasAccomplishmentOfBlinding a owl:DatatypeProperty ;
+  rdfs:domain ex:Blinding ; rdfs:range xsd:string ;
+  rdfs:label "Accomplishment of Blinding" .
+
+ex:hasAssignmentOfBlinding a owl:DatatypeProperty ;
+  rdfs:domain ex:Blinding ; rdfs:range xsd:string ;
+  rdfs:label "Assignment of Blinding" .
+
+# Participants
+ex:hasMinAge a owl:DatatypeProperty ;
+  rdfs:domain ex:Participants ; rdfs:range xsd:integer ;
+  rdfs:label "Min Age (years)" .
+
+ex:hasMaxAge a owl:DatatypeProperty ;
+  rdfs:domain ex:Participants ; rdfs:range xsd:integer ;
+  rdfs:label "Max Age (years)" .
+
+ex:hasAverageAge a owl:DatatypeProperty ;
+  rdfs:domain ex:Participants ; rdfs:range xsd:decimal ;
+  rdfs:label "Average Age (years)" ;
+  rdfs:comment "Only if explicitly stated; do not compute from min/max."@en .
+
+ex:hasAgeSD a owl:DatatypeProperty ;
+  rdfs:domain ex:Participants ; rdfs:range xsd:decimal ;
+  rdfs:label "Age SD (years)" ;
+  rdfs:comment "Standard deviation of age, if stated."@en .
+
+ex:hasEligibilityCriteria a owl:DatatypeProperty ;
+  rdfs:domain ex:Participants ; rdfs:range xsd:string ;
+  rdfs:label "Eligibility Criteria" .
+
+# Sample
+ex:hasSampleSize a owl:DatatypeProperty ;
+  rdfs:domain ex:Sample ; rdfs:range xsd:integer ;
+  rdfs:label "Sample Size" .
+
+ex:hasSampleDetermination a owl:DatatypeProperty ;
+  rdfs:domain ex:Sample ; rdfs:range xsd:string ;
+  rdfs:label "Sample Size Determination" ;
+  rdfs:comment "How the sample size was calculated."@en .
+
+ex:hasExplanationInterimAnalyses a owl:DatatypeProperty ;
+  rdfs:domain ex:Sample ; rdfs:range xsd:string ;
+  rdfs:label "Explanation of Interim Analyses and Stopping Rule" .
+
+# Generic method description (per-study instances of the method classes)
+ex:hasDescription a owl:DatatypeProperty ;
+  rdfs:domain ex:Methods ; rdfs:range xsd:string ;
+  rdfs:label "Description of Method" .
+
+#################################################################
+# Provenance (datatype properties)
+#################################################################
+
+ex:evidenceText a owl:DatatypeProperty ;
+  rdfs:domain owl:Thing ; rdfs:range xsd:string ;
+  rdfs:label "Evidence Text (verbatim snippet)" .
+
+ex:sourceSection a owl:DatatypeProperty ;
+  rdfs:domain owl:Thing ; rdfs:range xsd:string ;
+  rdfs:label "Source Section" ;
+  rdfs:comment "Suggested values: 'TitlePage', 'HeaderFooter', 'Abstract', 'Methods', 'Results', 'Discussion', 'References'."@en .
+
+ex:pageNumber a owl:DatatypeProperty ;
+  rdfs:domain owl:Thing ; rdfs:range xsd:integer ;
+  rdfs:label "Page Number" .
+
+ex:confidence a owl:DatatypeProperty ;
+  rdfs:domain owl:Thing ; rdfs:range xsd:decimal ;
+  rdfs:label "Extraction Confidence (0–1)" .
+
+#################################################################
+# OWL class restrictions
+#################################################################
+
+ex:Study rdfs:subClassOf
+  [ a owl:Restriction ; owl:onProperty ex:hasName ; owl:cardinality "1"^^xsd:nonNegativeInteger ],
+  [ a owl:Restriction ; owl:onProperty ex:hasPublisher ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ],
+  [ a owl:Restriction ; owl:onProperty ex:hasPublicationYear ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ],
+  [ a owl:Restriction ; owl:onProperty ex:hasPublicationMonth ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
